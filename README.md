@@ -1,38 +1,56 @@
-# DIO - Trilha .NET - Fundamentos
-www.dio.me
+# Sistema de Estacionamento — Desafio Fundamentos
 
-## Desafio de projeto
-Para este desafio, você precisará usar seus conhecimentos adquiridos no módulo de fundamentos, da trilha .NET da DIO.
+## Descrição Geral
 
-## Contexto
-Você foi contratado para construir um sistema para um estacionamento, que será usado para gerenciar os veículos estacionados e realizar suas operações, como por exemplo adicionar um veículo, remover um veículo (e exibir o valor cobrado durante o período) e listar os veículos.
+Projeto de sistema de estacionamento desenvolvido em C#.
+O sistema permite cadastrar, remover e listar veículos, calculando o valor total com base no preço inicial e preço por hora.
 
-## Proposta
-Você precisará construir uma classe chamada "Estacionamento", conforme o diagrama abaixo:
-![Diagrama de classe estacionamento](diagrama_classe_estacionamento.png)
+## Arquivo de Projeto (.csproj)
 
-A classe contém três variáveis, sendo:
+O arquivo de configuração do projeto (.csproj) foi modificado para atualizar a versão do .NET e ajustar as configurações de nulidade.
 
-**precoInicial**: Tipo decimal. É o preço cobrado para deixar seu veículo estacionado.
+**•** Atualização do Target Framework (net6.0 → net9.0)
 
-**precoPorHora**: Tipo decimal. É o preço por hora que o veículo permanecer estacionado.
+**•** Ativação da Análise de Nulidade (Nullable → enable)
 
-**veiculos**: É uma lista de string, representando uma coleção de veículos estacionados. Contém apenas a placa do veículo.
-
-A classe contém três métodos, sendo:
-
-**AdicionarVeiculo**: Método responsável por receber uma placa digitada pelo usuário e guardar na variável **veiculos**.
-
-**RemoverVeiculo**: Método responsável por verificar se um determinado veículo está estacionado, e caso positivo, irá pedir a quantidade de horas que ele permaneceu no estacionamento. Após isso, realiza o seguinte cálculo: **precoInicial** * **precoPorHora**, exibindo para o usuário.
-
-**ListarVeiculos**: Lista todos os veículos presentes atualmente no estacionamento. Caso não haja nenhum, exibir a mensagem "Não há veículos estacionados".
-
-Por último, deverá ser feito um menu interativo com as seguintes ações implementadas:
-1. Cadastrar veículo
-2. Remover veículo
-3. Listar veículos
-4. Encerrar
+## Arquivo Principal (Program.cs)
 
 
-## Solução
-O código está pela metade, e você deverá dar continuidade obedecendo as regras descritas acima, para que no final, tenhamos um programa funcional. Procure pela palavra comentada "TODO" no código, em seguida, implemente conforme as regras acima.
+**exibirMenu:** Feita alteração para formatar a caixa do menu assim demonstrando o mesmo de maneira mais organizada e agradável aos olhos.
+
+
+## Classe Estacionamento (Estacionamento.cs)
+
+### 1 Método AdicionarVeiculo(): Nesta subclasse foi realizada as seguintes alterações:
+
+  **1.1 'string placa = Console.ReadLine() ?? ""':** Utilizei , pois a partir das versões .NET 8+ há análise de nulidade mais estrita.
+
+  **1.2 'if(string.IsNullOrWhiteSpace(placa))':** Em conjutno empreguei uma condicional para recusar valores nulos.
+
+
+
+### 2 Método RemoverVeiculo(): Nesta subclasse foi realizada as seguintes alterações:
+
+
+  **2.1 Método 'RemoverVeiculo()':** Utilizei a mesma lógica da função 'AdicionarVeiculo'.
+
+  **2.2 'Console.ReadLine() ?? ""':** Garante que nunca teremos valor null na conversão. Mesma lógica utilizada na função AdicionarVeiculo.
+
+  **2.3 'Convert.ToInt32':** Converte a string para um número inteiro e garante que nunca teremos null.
+
+  **2.4 'valorTotal = precoInicial + precoPorHora * horas':** Conforme solicitado, foi formulado o cálculo (precoInicial + precoPorHora * horas) para a variável 'valorTotal'.
+
+  **2.5 'veiculos.Remove(placa)':** Remove a placa digitada da lista de veículos.
+
+
+
+### 3 Método ListarVeiculos(): Nesta subclasse foi realizada as seguintes alterações:
+ Feita alteração no Console.WriteLine, seguindo a ideia da Classe 'Program.cs', para demonstrar o menu de maneira mais organizada e agradável.
+
+  **3.1 Variável numero:** Utilizado comoo contador para numerar os veículos (1, 2, 3...).
+
+  **3.2 Loop foreach:** Itera sobre cada veículo na lista veiculos, basicamente Imprime todos os 'veículos' da registrados, um por linha.
+
+  **3.3 Formatação de string::** Tanto '{numero,2}' quanto '{veiculo,-10}', foi utilizado para alinhamento da tabela. Por fim 'numero++' aplicado como instrução fundamental que aumenta o contador cada vez que um veículo é processado, permitindo uma listagem ordenada dos veículos cadastrados no console.
+
+

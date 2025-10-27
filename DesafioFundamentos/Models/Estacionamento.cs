@@ -16,11 +16,10 @@ namespace DesafioFundamentos.Models
         {
 
             Console.WriteLine("Digite a placa do veículo para estacionar:");
-            // IMPLEMENTADO!!
-            string placa = Console.ReadLine() ?? ""; // Utilizei string placa = Console.ReadLine() ?? "", pois apartir das versões .NET8+ tem análise de nulidade mais estrita
+            string placa = Console.ReadLine() ?? ""; 
             if (string.IsNullOrWhiteSpace(placa))
             {
-                Console.WriteLine("Placa não pode ser Nula!");  // Em conjunto, empreguei uma condicional onde recuse valores nulos
+                Console.WriteLine("Placa não pode ser Nula!");  
                 return;
             }
             
@@ -32,11 +31,10 @@ namespace DesafioFundamentos.Models
         public void RemoverVeiculo()
         {
             Console.WriteLine("Digite a placa do veículo para remover:");
-            // IMPLEMENTADO!!
-            string placa = Console.ReadLine() ?? ""; // mesma logica utilizada na função 'AdicionarVeiculo'
+            string placa = Console.ReadLine() ?? "";
             if(string.IsNullOrWhiteSpace(placa))
             {
-                Console.WriteLine("Placa não pode ser Nula!"); // mesma logica utilizada na função 'AdicionarVeiculo'
+                Console.WriteLine("Placa não pode ser Nula!");
                 return;
             }
             Console.WriteLine($"Veiculo '{placa}' removido com sucesso!");
@@ -45,14 +43,12 @@ namespace DesafioFundamentos.Models
             {
                 Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
 
-                // IMPLEMENTADO!!
                 int horas = 0;
                 decimal valorTotal = 0;
-                horas = Convert.ToInt32(Console.ReadLine() ?? "0"); // Converte a string para um número inteiro e garante que nunca teremos null para o Convert.ToInt32()
-                valorTotal = precoInicial + precoPorHora * horas; // Conforme solicitado, foi formulado o calculo "precoInicial + precoPorHora * horas" para a variável valorTotal
+                horas = Convert.ToInt32(Console.ReadLine() ?? "0");
+                valorTotal = precoInicial + precoPorHora * horas; 
 
-                // IMPLEMENTADO!!
-                veiculos.Remove(placa); // Remove a placa digitada da lista de veículos
+                veiculos.Remove(placa); 
                 Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {valorTotal}");
             }
             else
@@ -66,13 +62,12 @@ namespace DesafioFundamentos.Models
             if (veiculos.Any())
             {
             Console.WriteLine("Os veículos estacionados são:"); 
-            Console.WriteLine("======================="); //Feita alteração para ficar mais organizado!!
+            Console.WriteLine("======================="); 
             Console.WriteLine(" VEÍCULOS CADASTRADOS ");
             Console.WriteLine("=======================");
 
             int numero = 1;
-                // IMPLEMENTADO!!
-                foreach (var veiculo in veiculos) //Imprime todos os 'veículos' da registrados, um por linha
+                foreach (var veiculo in veiculos) 
                 {
                     Console.WriteLine($"║ {numero,2} |     {veiculo,-10} ║");
                     numero++;
