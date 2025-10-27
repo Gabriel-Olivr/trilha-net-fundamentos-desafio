@@ -25,7 +25,7 @@ O arquivo de configuração do projeto (.csproj) foi modificado para atualizar a
 
   **1.1 'string placa = Console.ReadLine() ?? ""':** Utilizei , pois a partir das versões .NET 8+ há análise de nulidade mais estrita.
 
-  **1.2 'if(string.IsNullOrWhiteSpace(placa))':** Em conjutno empreguei uma condicional para recusar valores nulos.
+  **1.2 'if(string.IsNullOrWhiteSpace(placa))':** Em conjunto empreguei uma condicional para recusar valores nulos.
 
 
 
